@@ -54,9 +54,9 @@ print("--------------------------------------------------------------")
 print("Jet Seating Assignments")
 print("Run                             ",timestamp)
 print("--------------------------------------------------------------")
-print("Total avaiable seats - nodes  30 in each section "),
+print("Total avaiable seats - nodes  90 in each section "),
 print("Maximum  set size     ", len (S))
-print("Missed ", 30 -len(S))
+print("Missed ", 90 -len(S))
 print("Assignments in Nodes this run   ",S)
 print("--------------------------------------------------------------")
 print(" ")
