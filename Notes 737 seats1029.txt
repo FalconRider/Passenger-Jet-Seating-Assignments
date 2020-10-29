@@ -1,0 +1,152 @@
+Hypothetical Example:    COVID ERA AIRPLANE SEATING
+Just my production notes .
+This project may be flawed and have typos.
+I'll just trying to develope a workflow from idea to Advantage results printout
+--------------------------------------------------------------------------------------------------
+You're an Airline . Due to COVID you need to plan for SOCIAL DISTANCING on your planes.
+First Class is not a problem.  But in Economy you wish to only sell appropriate seats and pre reserve seats for 
+adequete separation. On on booking you need to give flyers specific seat assignments.
+
+You fly 737 the following seating configuration.
+The Economy section has 2 sides separated by an aisle sufficiently wide enough to consider adequete separation
+for two flyers directly on opposite sides. So each side is independant.
+
+Each side has 3 "Columns" A, B, C   or D,E, F where A and F are window seats and C and D are ailse seats.
+Its not enough, you feel to just reserve all the B and E seats since your passengers would be distant  enough from those beside them, 
+but not from those ahead or behind. Each Economy side has Rows 7 to Rows 39 which is 31 rows. (There's no row 13)
+And Row 7 is missing 3 seats on the left due  to the washrooms . So 30 rows for the left (Port side)
+
+I'll  use 30 both sides.
+
+I'll attempt to use the "VGA" model I'm experimenting with to determine. (Virgina G's antenna example model)
+
+How many seats you can sell. Maximize Passengers and therfor maximize revenue per flight.
+How many seats you can't  sell.
+Node numbers for the exact seats you can sell.
+Node numbers for those you can't.
+(There may be more than one configuration for either)
+I'm not going to write a cross reference table from node number to airline seat number 
+at this point.  Answers will be in nodes.  Make a sketch, cross reference.
+
+
+HOW  I SOLVED THIS:
+
+GENERATOR PY FILE
+
+1 OPEN my External Generator Three Rows .py file  
+It does just 3 rows but unlimited columns now so consider sideways orientation.
+
+ Interpreting this as 90 nodes in a 3  x 30 matrix. where Node 1 is  Seat 8F on the Right (Starboard) side of the 
+airpane  and Node 90 is seat 39C. We're gonna ignore the extra leg room for rows 20 and 21, by the emergency exits 
+over the wings.
+
+Each side is a 3 x 30. Just Repeat or flip for cross ailse (Starboard)side. Rerun at 31 if you wish.
+
+Edited 
+Line 10 Project Notes
+line 20 changed quant to 30
+line 185 added a title
+
+
+Ran it in Idle. Got results.
+
+It generated 263 pairs. In a big tuple. So whatz a pair?
+
+Orientation: was a problem had to think
+Picture a rectangular seating Aircraft picture with the nose of the plane pointing left. First class is rows 1 to 6 . We start Economy at Row 7.
+Node 1 is the window seat at the front of the right or starboard side. Seat 7F on a picture I found on the internet. 
+Node 2 is the seat behind him Airline designation Seat 8F .and so on to node 30 at  seat 38f.  (There's no row 13).
+Node 31 is the seat beside him. 7E And Node 32 is seat 8E, kitty corner behind. 
+
+Each pair is a constraint between 2 nodes. The first one (1,2)  means Node 1 can't be sold if Node 2 is cause they're too close. right behind.
+You'll also see a (1,31)  beside and a (1,32) kitty corner behind. These too would be too close.  These are that seats constaints.
+Node 1, Seat F7's,  an easy one no one's infront since he's the first row and no one at his right since he's at a window. 
+
+There is no constraint generated for  (1,3) two seats behind, Seat  F9, or same row ailse seat,  or (1,61), or Seat 8D  (1,62)  which have the minimum separation for Mr. Seat 7 F.
+
+Do a sketch , it'll come  ; ) 
+
+And that's good. the 263 pairs of constraints would he heck to do by hand and worse to type out with all the darn commas and brackets.
+You didnt have to.
+Made a printscreen of resultsscreen including stats.  Enclosed
+Made a copy and past of bare results and saved it as a text file. Enclosed
+
+It's easierr to check here if you have problems.
+At least you can increase the font size .
+
+And add furthur restrictions - - - 
+
+like a kid threw up on node (seat)   17 so its ineligible.
+Just add a pair (17,17)
+
+Or we'll let a couple who live together sit together in certain areas
+Take out the limiter beteen those seat - ie node 1 can sit beside node 31
+(remeber orientation, these are side by side seats)
+search text block  (CTL F) for and remove (1,31)
+if missing just search 31 - may be there as (31,1)
+since these pairs work as recipricals. 
+
+RUNNER PY  FILE
+
+Copy a Runner template. This is the more or less DWave antenna problem file
+modified for this problem instance. I 'll cal  it a VGA Cannister py program. 
+(Victoria G Antenna  example type problem)
+
+Includes DWave copyright statment.
+
+
+When you paste this in python  it will all go on one long line. 
+You'll think your programed disapeared but you just go left back to the beginning. Hit return to return.
+Missed front or end brackets will be most common problem
+If you run a large enough problem pairs wont appear in generator  just a button  that says how many lines your solution is and an offer to copy from the button.
+
+NEXT BACK TO GITHUB
+Paste file from local project directory to github project repo
+
+ADD FILE - UPLOAD FILE    then COMMIT
+Drag and drop from splitsceening github and local project directory
+
+Total File set to here 
+
+Generator Py
+Runner Py
+Png of Generator results
+Text file of generator results
+--  and previously generated readme
+This file to come - when done as a Notes file
+and screen caps of DWave Results - depends on variety of returns
+
+TO LEAP
+Add Leap prexit to html address at Github to open  Repo in Git 
+ala
+Prefix the URL in the address bar of your browser with: htZZtps://ide.dwavesys.io/#
+(take out the ZZ)
+Gets you to Leap Login screen (like Magic, luv this part)
+
+
+
+-------in Leap---
+Save workspace.
+Select runner file on left
+hit green arrow top right
+Run
+
+PROBLEM:  had 30 for caacity sb 90
+changed got error on lie
+couldn t fix deleted line
+
+did 4 runs - 4 different configs
+Took 2 screen caps ,made notes on them -uploaded.
+Checked DWave Leap Dashboard to see where processed
+and times   Screencapped and Uploaded. 
+
+End
+
+
+
+
+
+
+
+
+
